@@ -2,18 +2,18 @@ from flask import Flask
 from flask import send_file
 from ics import Calendar, Event
 import os
-import mysql.connector
+import psycopg2
 
 app = Flask(__name__)
 
-mydb = mysql.connector.connect(
-    host="127.0.0.1",
-    user="root",
-    password="789abcaaa",
-    auth_plugin='mysql_native_password'
-)
-
-print(mydb)
+connection = psycopg2.connect(host="127.0.0.1",
+                              port="5432",
+                              database="calendar")
+cur = connection.cursor()
+create_table = "CREATE TABLE users (first_name varchar(255), last_name varchar(255))"
+cur.execute(create_table)
+cur.close()
+connection.commit()
 
 
 @app.route("/")
