@@ -1,7 +1,6 @@
 from flask import Flask
 from flask import send_file
 from flask import request
-from ics import Calendar, Event
 import os
 import psycopg2
 import datetime
@@ -12,7 +11,6 @@ connection = psycopg2.connect(host="127.0.0.1",
                               port="5432",
                               database="calendar")
 
-print(connection)
 # cur = connection.cursor()
 # create_table = "CREATE TABLE users (uuid serial PRIMARY KEY, first_name varchar(255), last_name varchar(255))"
 # create_events = "CREATE TABLE events (event_id serial PRIMARY KEY, event_name varchar(255), event_location varchar(255), event_type varchar(255), start_time timestamp)"
@@ -53,22 +51,10 @@ def make_ics(user, data):
 
 @app.route("/")
 def hello():
-    return "Hello, World"
+    return "Calendar Server Home Route. To get a calendar, enter /get-cal?api=api_key"
 
 
 @app.route("/get-cal")
-def get_cal():
-    c = Calendar()
-    e = Event()
-    e.name = "My cool event"
-    e.begin = '2019-11-11 00:00:00'
-    c.events.add(e)
-    with open('my.ics', 'w') as my_file:
-        my_file.writelines(c)
-    return send_file("my.ics", mimetype="text/calendar", as_attachment=True)
-
-
-@app.route("/test")
 def test():
     parameter = request.args.get("api")
     sql_statement = f"select events.event_id, event_name, event_location, event_type, start_time, end_time, events.act from events join users_events on users_events.event_id = events.event_id where user_id = {parameter} and act = 1 or act = 2"
@@ -81,7 +67,7 @@ def test():
         make_ics(parameter, data)
     else:
         make_ics(parameter, data)
-    return "Got the data"
+    return send_file(f"user{parameter}.ics", mimetype="text/calendar", as_attachment=True)
 
 
 # port = int(os.environ.get("PORT", 5000))
