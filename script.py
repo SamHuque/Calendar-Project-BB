@@ -24,6 +24,7 @@ def make_ics(user, data):
     file = open(f"user{user}.ics", "w")
     file.write("BEGIN:VCALENDAR\n")
     file.write("VERSION:2.0\n")
+    file.write("X-PUBLISHED-TTL:PT1M\n")
     file.write("PRODID:sample calndar server\n")
     for event in data:
         file.write("BEGIN:VEVENT\n")
