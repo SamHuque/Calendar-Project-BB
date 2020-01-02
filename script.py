@@ -7,9 +7,9 @@ import datetime
 
 app = Flask(__name__)
 
-# connection = psycopg2.connect(host="127.0.0.1",
-#                               port="5432",
-#                               database="calendar")
+DATABASE_URL = os.environ['DATABASE_URL']
+
+connection = psycopg2.connect(DATABASE_URL, sslmode="require")
 
 # cur = connection.cursor()
 # create_table = "CREATE TABLE users (uuid serial PRIMARY KEY, first_name varchar(255), last_name varchar(255))"
@@ -52,6 +52,8 @@ def make_ics(user, data):
 
 @app.route("/")
 def hello():
+    if connection:
+        print "CONNECTED TO THE DATABASE"
     return "Calendar Server Home Route. To get a calendar, enter /get-cal?api=api_key"
 
 
