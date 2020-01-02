@@ -1,3 +1,4 @@
 flask
 flask-heroku
+psycopg2
 gunicorn
