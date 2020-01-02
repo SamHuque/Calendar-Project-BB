@@ -71,9 +71,9 @@ def test():
     return send_file(f"user{parameter}.ics", mimetype="text/calendar", as_attachment=True)
 
 
-# port = int(os.environ.get("PORT", 5000))
+port = int(os.environ.get("PORT", 5000))
 # uncomment the above for heroku
-port = 3500
+# port = 3500
 app.run(host='0.0.0.0', port=port)
 
 # this must be run with python3 and not python
