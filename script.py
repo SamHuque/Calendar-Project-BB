@@ -7,9 +7,9 @@ import datetime
 
 app = Flask(__name__)
 
-connection = psycopg2.connect(host="127.0.0.1",
-                              port="5432",
-                              database="calendar")
+# connection = psycopg2.connect(host="127.0.0.1",
+#                               port="5432",
+#                               database="calendar")
 
 # cur = connection.cursor()
 # create_table = "CREATE TABLE users (uuid serial PRIMARY KEY, first_name varchar(255), last_name varchar(255))"
