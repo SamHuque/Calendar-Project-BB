@@ -53,7 +53,7 @@ def make_ics(user, data):
 @app.route("/")
 def hello():
     if connection:
-        print "CONNECTED TO THE DATABASE"
+        print("CONNECTED TO THE DATABASE")
     return "Calendar Server Home Route. To get a calendar, enter /get-cal?api=api_key"
 
 
