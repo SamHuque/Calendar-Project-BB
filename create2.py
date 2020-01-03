@@ -20,9 +20,9 @@ insert_user1 = "INSERT INTO users (uuid, first_name, last_name) VALUES (1, 'Owen
 insert_user2 = "INSERT INTO users (uuid, first_name, last_name) VALUES (2, 'Glenda', 'Google')"
 
 insert_event1 = "INSERT INTO events (event_id, event_name, event_location, event_type, start_time, end_time, act) VALUES (1, 'Google Pixel Launch', 'Mountain View', 'Product Launch', '2020-01-26 15:00:00', '2020-01-26 16:00:00', 1);"
-insert_event2 = "INSERT INTO events (event_id, event_name, event_location, event_type, start_time, end_time, act) VALUES (2, 'Facebook Messenger', 'Los Angelas', 'Product Update', '2020-01-27 18:00:00', '2020-01-27 19:00:00', 1);"
+insert_event2 = "INSERT INTO events (event_id, event_name, event_location, event_type, start_time, end_time, act) VALUES (2, 'Facebook Messenger', 'Los Angelas', 'Product Update', '2020-01-27 16:00:00', '2020-01-27 17:00:00', 1);"
 insert_event3 = "INSERT INTO events (event_id, event_name, event_location, event_type, start_time, end_time, act) VALUES (3, 'Morgan Stanley Earnings Call', 'New York', 'Earnings Call', '2020-01-20 12:00:00', '2020-01-20 14:00:00', 1);"
-insert_event4 = "INSERT INTO events (event_id, event_name, event_location, event_type, start_time, end_time, act) VALUES (4, 'Lehman Brothers', 'Washington D.C', 'What', '2020-01-19 15:00:00', '2020-01-19 16:00:00', 1);"
+insert_event4 = "INSERT INTO events (event_id, event_name, event_location, event_type, start_time, end_time, act) VALUES (4, 'Lehman Brothers', 'Washington D.C', 'What', '2020-01-19 18:00:00', '2020-01-19 19:00:00', 1);"
 
 insert_users_events1 = "INSERT INTO users_events (user_id, event_id) VALUES (1, 1)"
 insert_users_events2 = "INSERT INTO users_events (user_id, event_id) VALUES (1, 2)"
