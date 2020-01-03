@@ -18,12 +18,14 @@ create_users_events = "CREATE TABLE users_events (id serial PRIMARY KEY, user_id
 
 insert_user1 = "INSERT INTO users (uuid, first_name, last_name) VALUES (1, 'Owen', 'Outlook')"
 insert_user2 = "INSERT INTO users (uuid, first_name, last_name) VALUES (2, 'Glenda', 'Google')"
-
+print("Line1")
 cur.execute(create_users)
 cur.close()
+print("Line2")
 cur = connection.cursor()
 cur.execute(create_events)
 cur.close()
+print("Line3")
 cur = connection.cursor()
 cur.execute(create_users_events)
 cur.close()
