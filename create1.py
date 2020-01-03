@@ -20,10 +20,12 @@ cur.execute(create_users)
 cur.close()
 connection.commit()
 
+cur = connection.cursor()
 cur.execute(create_events)
 cur.close()
 connection.commit()
 
+cur = connection.cursor()
 cur.execute(create_users_events)
 cur.close()
 connection.commit()
@@ -35,10 +37,12 @@ insert_user1 = "INSERT INTO users (uuid, first_name, last_name) VALUES (1, 'Owen
 
 insert_user2 = "INSERT INTO users (uuid, first_name, last_name) VALUES (2, 'Glenda', 'Google')"
 
+cur = connection.cursor()
 cur.execute(insert_user1)
 cur.close()
 connection.commit()
 
+cur = connection.cursor()
 cur.execute(insert_user2)
 cur.close()
 connection.commit()
