@@ -14,10 +14,10 @@ app = Flask(__name__)
 # connection = psycopg2.connect(DATABASE_URL, sslmode="require")
 
 object1 = {"1": [{"id": "1", "name": "Google Pixel Launch", "location": "Mountain View", "start": "20200126T150000Z", "end": "20200126T160000Z"}, {"id": "2", "name": "Facebook Messenger", "location": "Los Angeles", "start": "20200127T180000Z", "end": "20200127T190000Z"}],
-           "2": [{"id": "3", "name": "Morgan Stanley Earnings Call", "location": "New York", "start": "20200120T120000Z", "end": "20200120T140000Z"}, {"id": "4", "name": "Economic Club of NY", "location": "New York", "start": "20200119T150000Z", "end": "20200119T160000Z"}]}
+           "2": [{"id": "3", "name": "Morgan Stanley Earnings Call", "location": "New York", "start": "20200120T120000Z", "end": "20200120T140000Z"}, {"id": "4", "name": "Economic Club of NY", "location": "New York", "start": "20200119T150000Z", "end": "20200119T160000Z"}], "3": [{"id": "3", "name": "Morgan Stanley Earnings Call", "location": "Times Square", "start": "20200120T160000Z", "end": "20200120T170000Z"}, {"id": "4", "name": "Economic Club of NY", "location": "New York Fed", "start": "20200119T150000Z", "end": "20200119T160000Z"}]}
 
 object2 = {"1": [{"id": "1", "name": "Google Pixel Launch", "location": "Mountain View", "start": "20200128T150000Z", "end": "20200128T160000Z"}, {"id": "2", "name": "Facebook Messenger", "location": "Los Angeles", "start": "20200129T180000Z", "end": "20200129T190000Z"}],
-           "2": [{"id": "3", "name": "Morgan Stanley Earnings Call", "location": "New York", "start": "20200122T120000Z", "end": "20200122T140000Z"}, {"id": "4", "name": "Economic Club of NY", "location": "New York", "start": "20200121T150000Z", "end": "20200121T160000Z"}]}
+           "2": [{"id": "3", "name": "Morgan Stanley Earnings Call", "location": "New York", "start": "20200122T120000Z", "end": "20200122T140000Z"}, {"id": "4", "name": "Economic Club of NY", "location": "New York", "start": "20200121T150000Z", "end": "20200121T160000Z"}], "3": [{"id": "3", "name": "Morgan Stanley Earnings Call", "location": "Times Square", "start": "20200122T120000Z", "end": "20200122T140000Z"}, {"id": "4", "name": "Economic Club of NY", "location": "New York Fed", "start": "20200121T150000Z", "end": "20200121T160000Z"}]}
 
 
 # cur = connection.cursor()
@@ -85,6 +85,9 @@ def make_ics(user, data):
 
 @app.route("/")
 def hello():
+    global switch
+    switch = not switch
+    print(f"This is the value of switch: ->{switch}<-")
     return "Calendar Server Home Route. To get a calendar, enter /get-cal?api=api_key"
 
 
@@ -103,7 +106,7 @@ def test():
         make_ics(parameter, data)
     else:
         make_ics(parameter, data)
-    print(f"This is the value of switch: {switch}")
+    print(f"This is the value of switch: ->{switch}<-")
     return send_file(f"user{parameter}.ics", mimetype="text/calendar", as_attachment=True)
 
 
